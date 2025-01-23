@@ -41,15 +41,16 @@ def process_file(file_path):
     age = calculate_age(passport_mrz_json['birth_date'])
     passport_number = passport_mrz_json['document_number']
     expiry_date = format_date(passport_mrz_json['expiry_date'])
-    # maybe I need a trained OCR model (;_;)
     issuer_code = passport_mrz_json['issuer_code']  # negara
+    # maybe I need a trained OCR model (;_;)
+    issuing_office = "kantor imigrasi" # MRZ data typically doesn't include this; update if you know
     issue_date = "tanggal terbit"  # MRZ data typically doesn't include this; update if you know
     place_of_birth = "tempat lahir"  # MRZ data typically doesn't include this; update if you know
 
     # Format the output
     formatted_output = (
         f"{full_name}\t{sex}\t{place_of_birth}\t{birth_date}\t{age}\t"
-        f"{passport_number}\t{issue_date}\t{expiry_date}\t{issuer_code}"
+        f"{passport_number}\t{issue_date}\t{expiry_date}\t{issuing_office}"
     )
 
     # Copy formatted result to clipboard
